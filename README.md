@@ -48,3 +48,13 @@ Basic `.eslintrc`
 }
 
 ```
+
+Basic `.prettierrc`
+
+```json
+{
+  "trailingComma": "none",
+  "semi": false,
+  "singleQuote": true
+}
+```
