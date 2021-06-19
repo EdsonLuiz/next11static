@@ -19,6 +19,11 @@ $ yarn add -D @typescript-eslint/parser @typescript-eslint/eslint-plugin prettie
 Basic `.eslintrc`
 ```json
 {
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
@@ -27,6 +32,13 @@ Basic `.eslintrc`
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+        "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
   "plugins": ["@typescript-eslint"],
   "rules": {
     "react-hooks/rules-of-hooks": "error",
@@ -34,4 +46,5 @@ Basic `.eslintrc`
     "@typescript-eslint/explicit-module-boundary-types": "off"
   }
 }
+
 ```
