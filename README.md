@@ -115,68 +115,61 @@ $ yarn add -D prettier eslint-plugin-prettier eslint-config-prettier
 ```
 Now your code will be formated when you save any file.
 
-<!-- OLD, based only in docs -->
-
-<!--  
-
-Next is shiped with some ESLint configurations out of the box. Some considerations about this:
-- extends
-  - `next`: this extends recommended rule sets from various ESLint plugins like:
-    - eslint-plugin-react
-    - eslint-plugin-react-hooks
-    - eslint-plugin-next
-  - `plugin:react/recommended`: This can be removed, next extend this configuration.
-  - `next/core-web-vitals`: This update `eslint-plugin-next` transforming warnnings in errors. If you are happy with warnnings don't use this.
-- rules
-  - The rules below can/ should be removed, this rules are present in `eslint-plugin-next`
-    - react/prop-types": "off
-    - react/react-in-jsx-scope": "off
-
-## Basic configuration (not shiped with next11)
-```shell
-$ yarn add -D @typescript-eslint/parser @typescript-eslint/eslint-plugin prettier eslint-plugin-prettier eslint-config-prettier
-```
-Basic `.eslintrc`
-```json
-{
-  "env": {
-    "browser": true,
-    "es2021": true,
-    "node": true
-  },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "next", 
-    "next/core-web-vitals",
-    "plugin:prettier/recommended"
-  ],
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaFeatures": {
-        "jsx": true
-    },
-    "ecmaVersion": 12,
-    "sourceType": "module"
-  },
-  "plugins": ["@typescript-eslint"],
-  "rules": {
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
-  }
-}
-
-```
-
-Basic `.prettierrc`
-
-```json
-{
-  "trailingComma": "none",
-  "semi": false,
-  "singleQuote": true
-}
-```
-
--->
+## For Typescript projects
+To linting your TypeScript codebase is very simple, we need a parser and a plugin, but we have two options to achieve this.
+1. Not documentation based.  
+The `eslint-config-next`, shipped with all next11 installation, takes care of the parser, we just need to install and configure the plugin.
+    - Install
+      ```shell
+      $ yarn add -D @typescript-eslint/eslint-plugin
+      ```
+    - Configure: add `plugin:@typescript-eslint/recommended`
+      ```json
+      {
+        "env": {
+          "browser": true,
+          "es2021": true,
+          "node": true
+        },
+        "extends": [
+          "eslint:recommended",
+          "plugin:@typescript-eslint/recommended",
+          "next", 
+          "next/core-web-vitals",
+          "plugin:prettier/recommended" // always at the end
+        ]
+      }
+      ```
+2. Documentation based.  
+Using built-in parser, provided by next, we don't have control about parser version, and acording docs of `@typescript-eslint/eslint-plugin`.
+    >It is important that you use the same version number for @typescript-eslint/parser and @typescript-eslint/eslint-plugin.
+    
+    - Install parser and plugin (this will install latest version)
+      ```shell
+      $ yarn add -D @typescript-eslint/parser @typescript-eslint/eslint-plugin
+      ```
+    - Configure parser `@typescript-eslint/parser` and plugin `plugin:@typescript-eslint/recommended` (I haven't done enough tests to know if `parserOptions` object is needed, you can try without it)
+      ```json
+      {
+        "env": {
+          "browser": true,
+          "es2021": true,
+          "node": true
+        },
+        "parser": "@typescript-eslint/parser",
+        "parserOptions": {
+          "ecmaFeatures": {
+              "jsx": true
+          },
+          "ecmaVersion": 12,
+          "sourceType": "module"
+        },
+        "extends": [
+          "eslint:recommended",
+          "plugin:@typescript-eslint/recommended",
+          "next", 
+          "next/core-web-vitals",
+          "plugin:prettier/recommended" // always at the end
+        ]
+      }
+      ```
