@@ -3,5 +3,5 @@ export function HomeComponent() {
     <>
       <h1>HomeComponent </h1>
     </>
-  );
+  )
 }
