@@ -116,7 +116,7 @@ $ yarn add -D prettier eslint-plugin-prettier eslint-config-prettier
 Now your code will be formated when you save any file.
 
 ## For Typescript projects
-To linting your TypeScript codebase is very simple, we need a parser and a plugin, but we have two options to achieve this.
+To Lint your TypeScript codebase is very simple, we need a parser and a plugin, but we have two options to achieve this.
 1. Not documentation based.  
 The `eslint-config-next`, shipped with all next11 installation, takes care of the parser, we just need to install and configure the plugin.
     - Install
@@ -148,7 +148,7 @@ Using built-in parser, provided by next, we don't have control about parser vers
       ```shell
       $ yarn add -D @typescript-eslint/parser @typescript-eslint/eslint-plugin
       ```
-    - Configure parser `@typescript-eslint/parser` and plugin `plugin:@typescript-eslint/recommended` (I haven't done enough tests to know if `parserOptions` object is needed, you can try without it)
+    - Configure parser `@typescript-eslint/parser` and plugin `plugin:@typescript-eslint/recommended` (I haven't done enough tests to know whether `parserOptions` object is needed, you can try without it)
       ```json
       {
         "env": {
